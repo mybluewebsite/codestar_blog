@@ -28,5 +28,27 @@ def post_detail(request, slug):
     return render(
         request,
         "blog/post_detail.html",
-        {"post": post},
+        {"post": post,
+         "coder": "mybluewebsite"},
+    )
+
+#class EventsList(generic.ListView):
+
+
+    model = Event
+    template_name = "index.html"
+    paginate_by = 12
+
+
+
+
+#def event_detail(request, event_id):
+    
+    queryset = Event.objects.all()
+    event = get_object_or_404(Event, event_id=event_id)
+
+    return render(
+        request,
+        "events/event_detail.html",
+        {"event": event}
     )
